@@ -38,6 +38,15 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'main',
+    'news',
+    'cat',
+    'subcat',
+    'contactform',
+    'trending',
+    'manager',
+    'newsletter',
+    'comment',
+    'blacklist',
     
 ]
 
