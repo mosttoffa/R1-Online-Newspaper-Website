@@ -161,41 +161,7 @@
 					</div>
 
 					<div class="row p-t-35">
-						<div class="col-sm-6 p-r-25 p-r-15-sr991">
-							<!-- Item post -->	
-							{% for ab in news %}
-							{% if newscat.pk == ab.ocatid %}
-							<div class="flex-wr-sb-s m-b-30">
-								<a href="{% url 'news_detail' word=ab.name %}" class="size-w-1 wrap-pic-w hov1 trans-03">
-									<img src="{{ab.picurl}}" alt="IMG">
-								</a>
 
-								<div class="size-w-2">
-									<h5 class="p-b-5">
-										<a href="{% url 'news_detail' word=ab.name %}" class="f1-s-5 cl3 hov-cl10 trans-03">
-											{{ab.name}}
-										</a>
-									</h5>
-
-									<span class="cl8">
-										<a href="#" class="f1-s-6 cl8 hov-cl10 trans-03">
-											{{ab.catname}}
-										</a>
-
-										<span class="f1-s-3 m-rl-3">
-											-
-										</span>
-
-										<span class="f1-s-3">
-											{{ab.date}} | {{ab.time}}
-										</span>
-									</span>
-								</div>
-							</div>
-							{% endif %}
-							{% endfor %}
-						
-						</div>
 
 						<div class="col-sm-6 p-r-25 p-r-15-sr991">
 							<!-- Item post -->	
@@ -233,8 +199,64 @@
 							{% endif %}
 							{% endif %}
 							{% endfor %}
+
+								
+								{% if news.has_previous %}
+								<a href="?page={{news.previous_page_number}}"  data-toggle="tooltip" title="Previous" class="btn btn-xs btn-default"> <i class="fas fa-angle-double-left"></i></a>
+								{% endif %}
+
+								{% for i in news.paginator.page_range %}
+									{% if news.number == i %}
+										<a href="#" onclick="return false;" data-toggle="tooltip" title="{{Disables}}" class="btn btn-xs btn-default"> {{i}}</a>
+									{% else %}
+										<a href="?page={{i}}" data-toggle="tooltip" title="{{i}}" class="btn btn-xs btn-default"> {{i}}</a>
+									{% endif %}
+								{% endfor %}
+								
+								{% if news.has_next %}
+								<a href="?page={{news.next_page_number}}" data-toggle="tooltip" title="Next" class="btn btn-xs btn-default"> <i class="fas fa-angle-double-right"></i></a>
+								{% endif %}
 							
 						</div>
+
+
+						<div class="col-sm-6 p-r-25 p-r-15-sr991">
+							<!-- Item post -->	
+							{% for ab in news %}
+							{% if newscat.pk == ab.ocatid %}
+							<div class="flex-wr-sb-s m-b-30">
+								<a href="{% url 'news_detail' word=ab.name %}" class="size-w-1 wrap-pic-w hov1 trans-03">
+									<img src="{{ab.picurl}}" alt="IMG">
+								</a>
+
+								<div class="size-w-2">
+									<h5 class="p-b-5">
+										<a href="{% url 'news_detail' word=ab.name %}" class="f1-s-5 cl3 hov-cl10 trans-03">
+											{{ab.name}}
+										</a>
+									</h5>
+
+									<span class="cl8">
+										<a href="#" class="f1-s-6 cl8 hov-cl10 trans-03">
+											{{ab.catname}}
+										</a>
+
+										<span class="f1-s-3 m-rl-3">
+											-
+										</span>
+
+										<span class="f1-s-3">
+											{{ab.date}} | {{ab.time}}
+										</span>
+									</span>
+								</div>
+							</div>
+							{% endif %}
+							{% endfor %}
+						
+						</div>
+
+
 					</div>
 				</div>
 				{% endif %}
@@ -291,10 +313,27 @@
 			</div>
 		</div>
 		{% endfor %}
-	
-		
 
 	</div>
+
+			Page {{news.number}} From {{news.paginator.num_pages}} :
+			
+			{% if news.has_previous %}
+			<a href="?page={{news.previous_page_number}}"  data-toggle="tooltip" title="Previous" class="btn btn-xs btn-default"> <i class="fas fa-angle-double-left"></i></a>
+			{% endif %}
+
+			{% for i in news.paginator.page_range %}
+				{% if news.number == i %}
+					<a href="#" onclick="return false;" data-toggle="tooltip" title="{{Disables}}" class="btn btn-xs btn-default"> {{i}}</a>
+				{% else %}
+					<a href="?page={{i}}" data-toggle="tooltip" title="{{i}}" class="btn btn-xs btn-default"> {{i}}</a>
+				{% endif %}
+			{% endfor %}
+			
+			{% if news.has_next %}
+			<a href="?page={{news.next_page_number}}" data-toggle="tooltip" title="Next" class="btn btn-xs btn-default"> <i class="fas fa-angle-double-right"></i></a>
+			{% endif %}
+
 </div>
 </section>
 

@@ -14,6 +14,7 @@ from ipware import get_client_ip
 from ip2geotools.databases.noncommercial import DbIpCity
 from blacklist.models import BlackList
 
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 # Create your views here.
 
@@ -30,6 +31,22 @@ def home(request):
     popnews2 = News.objects.filter(act=1).order_by('-show')[:3]
     trending = Trending.objects.all().order_by('-pk')[:5]
     lastnews2 = News.objects.filter(act=1).order_by('-pk')[:4]
+    
+    #paginator start
+    newss = News.objects.filter(act=1).order_by('-pk')
+    paginator = Paginator(newss,6) ## paginator page no
+    page = request.GET.get('page')
+
+    try:
+        news = paginator.page(page)
+
+    except EmptyPage :
+        news = paginator.page(paginator.num_page)
+
+    except PageNotAnInteger :
+        news = paginator.page(1)
+    #paginator end
+
 
     return render(request, 'front/home.html', {'site':site, 'news':news, 'cat':cat, 'subcat':subcat, 'lastnews':lastnews, 'popnews':popnews, 'popnews2':popnews2, 'trending':trending, 'lastnews2':lastnews2})
 

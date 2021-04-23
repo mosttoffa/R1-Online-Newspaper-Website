@@ -51,7 +51,6 @@ def news_detail(request,word):
 
 
 
-
 def news_detail_short(request,pk):
     
     site = Main.objects.get(pk=3)

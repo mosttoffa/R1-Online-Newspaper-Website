@@ -4,7 +4,6 @@ from cat.models import Cat
 
 # Create your views here.
 
-
 def subcat_list(request):
 
     # login check start
