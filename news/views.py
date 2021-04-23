@@ -17,7 +17,7 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 def news_detail(request,word):
 
 
-    site = Main.objects.get(pk=2)
+    site = Main.objects.get(pk=3)
     news = News.objects.filter(act=1).order_by('-pk')
     cat = Cat.objects.all()
     subcat = SubCat.objects.all()
@@ -54,7 +54,7 @@ def news_detail(request,word):
 
 def news_detail_short(request,pk):
     
-    site = Main.objects.get(pk=2)
+    site = Main.objects.get(pk=3)
     news = News.objects.filter(act=1).order_by('-pk')
     cat = Cat.objects.all()
     subcat = SubCat.objects.all()
@@ -393,7 +393,7 @@ def news_all_show(request,word):
     catid = Cat.objects.get(name=word).pk
     allnews = News.objects.filter(ocatid=catid)
 
-    site = Main.objects.get(pk=2)
+    site = Main.objects.get(pk=3)
     news = News.objects.filter(act=1).order_by('-pk')
     cat = Cat.objects.all()
     subcat = SubCat.objects.all()

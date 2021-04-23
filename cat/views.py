@@ -31,12 +31,12 @@ def cat_add(request):
 
         if name == "" :
 
-            error = "All fields are requirded."
+            error = "All Fields Requirded"
             return render(request, 'back/error.html' , {'error':error})
 
         if len(Cat.objects.filter(name=name)) != 0 :
 
-            error = "This name used before!"
+            error = "This Name Used Before"
             return render(request, 'back/error.html' , {'error':error})
 
         b = Cat(name=name)
@@ -67,11 +67,11 @@ def import_cat_csv(request):
         csv_file = request.FILES['csv_file']
 
         if not csv_file.name.endswith('.csv'):
-            error = "Please input csv file."
+            error = "Please Input Csv File"
             return render(request, 'back/error.html' , {'error':error})
 
         if csv_file.multiple_chunks():
-            error = "File is too large!"
+            error = "File Too Large"
             return render(request, 'back/error.html' , {'error':error})
 
         file_data = csv_file.read().decode("utf-8")

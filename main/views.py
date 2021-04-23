@@ -21,8 +21,7 @@ from blacklist.models import BlackList
 def home(request):
 
 
-    ### etai baki ase only
-    site = Main.objects.get(pk=2)
+    site = Main.objects.get(pk=3)
     news = News.objects.filter(act=1).order_by('-pk')
     cat = Cat.objects.all()
     subcat = SubCat.objects.all()
@@ -38,7 +37,7 @@ def home(request):
 
 def about(request):
     
-    site = Main.objects.get(pk=2)
+    site = Main.objects.get(pk=3)
     news = News.objects.filter(act=1).order_by('-pk')
     cat = Cat.objects.all()
     subcat = SubCat.objects.all()
@@ -138,7 +137,7 @@ def myregister(request):
             return render(request, 'front/msgbox.html', {'msg':msg})
 
         if len(password1) < 8 :
-            msg = "Your password must be more than 8 characters! and use minimum one character of all of them 0-9, A-Z, a-z, !-( "
+            msg = "Your password must be more than 9 characters! and use minimum one character of all of them 0-9, A-Z, a-z, !-( "
             return render(request, 'front/msgbox.html', {'msg':msg})
 
         if len(User.objects.filter(username=uname)) == 0 and len(User.objects.filter(email=email)) == 0 :
@@ -243,7 +242,7 @@ def site_setting(request):
 
 
 
-        b = Main.objects.get(pk=2)
+        b = Main.objects.get(pk=3)
         b.name = name
         b.tell = tell
         b.fb = fb
@@ -263,7 +262,7 @@ def site_setting(request):
        
 
 
-    site = Main.objects.get(pk=2)
+    site = Main.objects.get(pk=3)
 
 
     return render(request, 'back/setting.html', {'site':site})
@@ -292,11 +291,11 @@ def about_setting(request):
             error = "All Fields Requirded"
             return render(request, 'back/error.html' , {'error':error})
 
-        b = Main.objects.get(pk=2)
+        b = Main.objects.get(pk=3)
         b.abouttxt = txt
         b.save()
 
-    about = Main.objects.get(pk=2).abouttxt
+    about = Main.objects.get(pk=3).abouttxt
 
     return render(request, 'back/about_setting.html', {'about':about})
 
@@ -304,7 +303,7 @@ def about_setting(request):
 def contact(request):
 
     
-    site = Main.objects.get(pk=2)
+    site = Main.objects.get(pk=3)
     news = News.objects.filter(act=1).order_by('-pk')
     cat = Cat.objects.all()
     subcat = SubCat.objects.all()
@@ -338,7 +337,7 @@ def change_pass(request):
         if user != None :
 
             if len(newpass) < 8 :
-                error = "Your password must be more than 8 characters! and use minimum one character of all of them 0-9, A-Z, a-z, !-( "
+                error = "Your password must be more than 9 characters! and use minimum one character of all of them 0-9, A-Z, a-z, !-( "
                 return render(request, 'back/error.html' , {'error':error})
 
             count1 = 0

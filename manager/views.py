@@ -25,7 +25,7 @@ def manager_list(request):
         if i.name == "masteruser" : perm = 1
 
     if perm == 0 :
-        error = "Access Denied"
+        error = "Access Denied!"
         return render(request, 'back/error.html' , {'error':error})
     
     manager = Manager.objects.all().exclude(utxt="admin")
@@ -73,7 +73,7 @@ def manager_group(request):
         if i.name == "masteruser" : perm = 1
 
     if perm == 0 :
-        error = "Access Denied"
+        error = "Access Denied!"
         return render(request, 'back/error.html' , {'error':error})
 
     perm = 0
@@ -81,7 +81,7 @@ def manager_group(request):
         if i.name == "masteruser" : perm = 1
 
     if perm == 0 :
-        error = "Access Denied"
+        error = "Access Denied!"
         return render(request, 'back/error.html' , {'error':error})
     
     group = Group.objects.all().exclude(name="masteruser")
@@ -103,7 +103,7 @@ def manager_group_add(request):
         if i.name == "masteruser" : perm = 1
 
     if perm == 0 :
-        error = "Access Denied"
+        error = "Access Denied!"
         return render(request, 'back/error.html' , {'error':error})
 
     if request.method == 'POST' :
@@ -245,7 +245,7 @@ def manager_perms(request):
         if i.name == "masteruser" : perm = 1
 
     if perm == 0 :
-        error = "Access Denied"
+        error = "Access Denied!"
         return render(request, 'back/error.html' , {'error':error})
 
     perm = 0
@@ -253,7 +253,7 @@ def manager_perms(request):
         if i.name == "masteruser" : perm = 1
 
     if perm == 0 :
-        error = "Access Denied"
+        error = "Access Denied!"
         return render(request, 'back/error.html' , {'error':error})
     
     perms = Permission.objects.all()
@@ -274,7 +274,7 @@ def manager_perms_del(request,name):
         if i.name == "masteruser" : perm = 1
 
     if perm == 0 :
-        error = "Access Denied"
+        error = "Access Denied!"
         return render(request, 'back/error.html' , {'error':error})
 
     perm = 0
@@ -282,7 +282,7 @@ def manager_perms_del(request,name):
         if i.name == "masteruser" : perm = 1
 
     if perm == 0 :
-        error = "Access Denied"
+        error = "Access Denied!"
         return render(request, 'back/error.html' , {'error':error})
     
     perms = Permission.objects.filter(name=name)
@@ -304,7 +304,7 @@ def manager_perms_add(request):
         if i.name == "masteruser" : perm = 1
 
     if perm == 0 :
-        error = "Access Denied"
+        error = "Access Denied!"
         return render(request, 'back/error.html' , {'error':error})
 
     perm = 0
@@ -312,7 +312,7 @@ def manager_perms_add(request):
         if i.name == "masteruser" : perm = 1
 
     if perm == 0 :
-        error = "Access Denied"
+        error = "Access Denied!"
         return render(request, 'back/error.html' , {'error':error})
     
     

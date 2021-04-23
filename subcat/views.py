@@ -5,7 +5,6 @@ from cat.models import Cat
 # Create your views here.
 
 
-
 def subcat_list(request):
 
     # login check start
@@ -16,7 +15,6 @@ def subcat_list(request):
     subcat = SubCat.objects.all()
 
     return render(request, 'back/subcat_list.html', {'subcat':subcat})
-
 
 
 def subcat_add(request):
