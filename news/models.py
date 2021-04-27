@@ -6,7 +6,7 @@ from django.db import models
 
 class News(models.Model):
 
-    name = models.CharField(max_length=150)
+    name = models.CharField(max_length=250)
     short_txt = models.TextField()
     body_txt = models.TextField()
     date = models.CharField(max_length=12)

@@ -243,8 +243,7 @@ def news_delete(request,pk):
         ocatid = News.objects.get(pk=pk).ocatid
 
         b.delete()
-
-        
+       
         count = len(News.objects.filter(ocatid=ocatid))
 
         m = Cat.objects.get(pk=ocatid)
