@@ -1,1 +1,1 @@
-# Faruk-Website
+# Online Newspaper Website
